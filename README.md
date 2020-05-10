@@ -5,3 +5,5 @@ Code takes the data from https://data.humdata.org/dataset/novel-coronavirus-2019
 Code doesn't handle errors properly at this point, so user should input the data correctly.
 
 Required modules: Pandas, Matplotlib, numpy, urllib
+
+Python version: Python3
