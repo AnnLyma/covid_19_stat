@@ -5,7 +5,6 @@ import matplotlib.dates as mdates
 import matplotlib.ticker as ticker
 import numpy as np
 from urllib.request import urlretrieve
-import io
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 
