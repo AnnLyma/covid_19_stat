@@ -40,7 +40,7 @@ def us_input():
 	userinput = input\
 ("""\n \n
 Type the name of the country for which you want to see the cumulative graph of COVID - 19 cases.\n
-	> If you are interested in more than one country, separate names by a comma followed by a space.
+	> If you are interested in more than one country, separate names by a semicolon followed by a space.
 	> In case you want to see the graph which shows the cumulative sum for top-N countries, type N.
 	> In case you want to see the graphs for all countries type 'all'.
 	> In case you want to see the graph which shows the cumulative sum of total cases, type 'total'.
@@ -51,11 +51,11 @@ Type the name of the country for which you want to see the cumulative graph of C
 		global input_number
 		input_number += int(userinput)
 		return input_number
-# Else split the userinput by comma in order to handle cases with >1 country
+# Else split the userinput by semicolon in order to handle cases with >1 country
 # And convert list to tuple (needed in order to be able to build charts later)
 	else:
 		# TODO: handle userinput better (accept arguments in commandline)
-		userinput = userinput.split(', ')
+		userinput = userinput.split('; ')
 		userinput = [i.lower() for i in userinput]
 		return(userinput)
 
