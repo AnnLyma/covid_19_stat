@@ -4,7 +4,7 @@ Required modules: Pandas, Matplotlib, urllib, numpy
 
 Python version: Python3
 
-In order to run the .ipynb file use Jupyter notebook
+In order to run the .ipynb files use Jupyter notebook
 
 
 __________________________________
