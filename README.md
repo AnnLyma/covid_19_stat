@@ -12,12 +12,10 @@ For **cumulative_graphs.py**:
 
 The code takes the user's input and returns a cumulative graph of covid-19 cases.
 
-Supported options:
+**Supported options**:
 
 a) one country
-
 b) several countries (with their names being entered via semicolon followed by a space)
-
 c) top - N countries
 
 d) all countries simultaneously
