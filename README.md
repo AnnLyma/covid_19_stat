@@ -14,15 +14,15 @@ The code takes the user's input and returns a cumulative graph of covid-19 cases
 
 **Supported options**:
 
-*a) one country
+a) one country
 
-*b) several countries (with their names being entered via semicolon followed by a space)
+b) several countries (with their names being entered via semicolon followed by a space)
 
-*c) top - N countries
+c) top - N countries
 
-*d) all countries simultaneously
+d) all countries simultaneously
 
-*e) total worldwide cases
+e) total worldwide cases
 
 
 
