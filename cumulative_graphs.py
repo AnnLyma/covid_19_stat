@@ -13,7 +13,6 @@ url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/\
 csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_\
 confirmed_global.csv"
 df = pd.read_csv(url)
-
 # drop unneeded columns
 dfl = df.drop(['Province/State', 'Lat', 'Long'], axis=1)
 # groupby by country (sum of cases(
@@ -22,8 +21,8 @@ dfg = dfl.groupby('Country/Region').sum()
 dft = dfg.T.copy()
 # reset index
 dft = dft.copy().reset_index()
-
-
+#change column names to lowercase
+dft.columns = map(str.lower, dft.columns)
 # define a variable to be able to \
 # tell the user what countries are present in the dataset
 countriesn = dft.columns.values
@@ -39,13 +38,13 @@ input_number = 0
 # either the number entered by the user or the tuple with couuntry name/s
 def us_input():
 	userinput = input\
-("""\n___________________________________________________________________________________________
+("""\n \n
 Type the name of the country for which you want to see the cumulative graph of COVID - 19 cases.\n
 	> If you are interested in more than one country, separate names by a comma followed by a space.
 	> In case you want to see the graph which shows the cumulative sum for top-N countries, type N.
 	> In case you want to see the graphs for all countries type 'all'.
 	> In case you want to see the graph which shows the cumulative sum of total cases, type 'total'.
-	\n""" + """FYI: The countries present in the dataset are the following: \n \n""" + countriesstr + """\nType here: \n \n""")
+	\n""" + """FYI: The countries present in the dataset are the following: \n \n""" + countriesstr.lower() + """\nType here: \n \n""")
 
 # If user wants to see info for top - N countries, return the input number
 	if userinput.isdigit():
@@ -57,6 +56,7 @@ Type the name of the country for which you want to see the cumulative graph of C
 	else:
 		# TODO: handle userinput better (accept arguments in commandline)
 		userinput = userinput.split(', ')
+		userinput = [i.lower() for i in userinput]
 		return(userinput)
 
 # This function will build the charts depending on userinput
@@ -86,6 +86,8 @@ def build_graph(*args):
 				plt.xticks(rotation = 55, fontsize = 7)
 				plt.yticks(fontsize = 7)
 				plt.title ('Cumulative sum graphs for all countries', fontsize = 20)
+				# print(dft1)
+				dft1.columns = map(str.upper, dft1.columns)
 				plt.legend(dft1, fontsize = 5, ncol = 5, loc = "upper left")
 				plt.show()
 
@@ -110,11 +112,13 @@ def build_graph(*args):
 				fig1 = plt.figure(figsize = (13, 8), dpi = 100)
 				for arg1 in args:
 					for arg in arg1:
-						# arg = arg.title()
+						# arg = arg.upper()
 						plt.xticks(rotation = 55, fontsize = 8)
 						plt.yticks(fontsize = 8)
 						dft['date'] = pd.to_datetime(dft['index'])
-						plt.plot(dft.date, dft[[arg]], label = dft[[arg]].columns.values)
+						for_legend = dft[[arg]].columns.values
+						for_legend = for_legend[0].upper()
+						plt.plot(dft.date, dft[[arg]], label = for_legend)
 						plt.legend(ncol = 1)
 					plt.show()
 
@@ -141,15 +145,13 @@ def build_graph(*args):
 			last_date = coln
 			# find top countries for the last date
 			top_x = countries_sum[last_date].nlargest(arg).index
-			#print(top_x)
-			# check what data is there if needed
-			# top_x_d = countries_sum.loc[top_x]
+
 
 			#draw a chart
 			ax.plot(countries_sum.loc[top_x].T)
 			plt.title ('Cumulative cases in top ' + str(arg) + ' Countries', fontsize = 20)
 			plt.xticks(rotation = 55, fontsize = 8)
-			plt.legend(countries_sum.loc[top_x].T, fontsize = 8, ncol = 1, loc = "upper left")
+			plt.legend(countries_sum.loc[top_x].T, fontsize = 8, ncol = 3, loc = "upper left")
 			plt.show()
 
 # execute the code
