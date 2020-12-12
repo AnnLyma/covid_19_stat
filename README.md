@@ -1,11 +1,32 @@
 # covid_19_stat
 
-Code takes the data from https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases (confirmed_global) and based on user input returns a graph of cumulative cases either for one country, several countries (with their names being entered via comma), top - N countries, all countries simultaneously, or for total worldwide cases.
-
-Code doesn't handle errors properly at this point, so user should input the data correctly.
-
-Required modules: Pandas, Matplotlib, urllib
+Required modules: Pandas, Matplotlib, urllib, numpy
 
 Python version: Python3
 
 In order to run the .ipynb file use Jupyter notebook
+
+
+__________________________________
+For cumulative_graphs.py:
+
+The code takes the user's input and returns a cumulative graph of covid-19 cases.
+
+Supported options:
+a) one country
+b) several countries (with their names being entered via semicolon followed by a space)
+c) top - N countries
+d) all countries simultaneously
+e) total worldwide cases
+
+
+
+__________________________________
+For growth_rate.py:
+
+The code supports only one country for now.
+
+The code doesn't handle errors properly at this point, so user should input the data correctly.
+
+
+Additional info: Code takes the data from https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases (confirmed_global)
