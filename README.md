@@ -4,6 +4,8 @@ Code takes the data from https://data.humdata.org/dataset/novel-coronavirus-2019
 
 Code doesn't handle errors properly at this point, so user should input the data correctly.
 
-Required modules: Pandas, Matplotlib, numpy, urllib
+Required modules: Pandas, Matplotlib, urllib
 
 Python version: Python3
+
+In order to run the .ipynb file use Jupyter notebook
